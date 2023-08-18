@@ -1,0 +1,10 @@
+DROP TABLE episodeIV;
+CREATE TABLE episodeIV (name STRING, line STRING)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' TBLPROPERTIES ("skip.header.line.count"="2");
+
+LOAD DATA LOCAL INPATH '/root/inputs/episodeIV_dialouges.txt' INTO TABLE episodeIV;
+
+INSERT OVERWRITE DIRECTORY 'hdfs:///user/hive/warehouse/export' ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+SELECT COUNT(*) FROM episodeIV where INSTR(line, 'Luke')>0;
+
+
