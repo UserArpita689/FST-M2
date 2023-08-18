@@ -1,0 +1,17 @@
+# Open up vim, paste the text from slide 20.1 and save and exit.
+root@2d8729aa008c:~# vim txtFile.txt
+
+# Open up vim, paste the text from slide 20.2 and save and exit.
+root@2d8729aa008c:~# vim csvFile.csv
+
+
+
+# Copy the TXT file, txtFile.txt, into the textData folder in the HDFS
+root@2d8729aa008c:~# hdfs dfs -put ./txtFile.txt /user/arpita
+
+# Copy the CSV file, csvFile.csv, into the textData folder in the HDFS
+root@2d8729aa008c:~# hdfs dfs -put ./csvFile.csv /user/arpita
+
+# Use the stat command to get the file statistics
+root@2d8729aa008c:~# hdfs dfs -stat "type:%F permissions:%a %u:%g size:%b name:%n" /user/arpita/txtFile.txt
+ root@2d8729aa008c:~# hdfs dfs -stat "type:%F permissions:%a %u:%g size:%b name:%n" /user/arpita/csvFile.csv
