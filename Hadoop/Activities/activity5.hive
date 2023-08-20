@@ -1,0 +1,15 @@
+CREATE TABLE employee
+(id INT, name STRING, dept STRING, yoj INT, salary INT)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+TBLPROPERTIES ("skip.header.line.count"="1");
+
+LOAD DATA LOCAL INPATH
+'/root/EmpData.csv'
+INTO TABLE employee;
+
+INSERT OVERWRITE DIRECTORY 'hdfs:///user/hive/warehouse/EmpData' ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+SELECT  id, name FROM employee;
+SELECT * FROM employee WHERE salary > 30000;
+SELECT count(*) FROM employee;
+
+
